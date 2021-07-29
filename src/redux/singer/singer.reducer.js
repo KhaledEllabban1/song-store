@@ -1,11 +1,11 @@
 import SingerActionTypes from './singer.types';
 import data from './data';
-import { add } from '../utils';
+import { add, checkedSinger, toggleFun } from '../utils';
 
 const INITIAL_STATE = {
     data : data,
     selectedSingers : [],
-    checked : false
+    checkedArray : checkedSinger(data)
 }
 
 const singerReducer = (state = INITIAL_STATE, action) => {
@@ -13,22 +13,20 @@ const singerReducer = (state = INITIAL_STATE, action) => {
         case SingerActionTypes.ADD_SINGER : 
             return {
                 ...state,
-                selectedSingers: add(state.selectedSingers, action.payload),
-                checked: !state.checked
+                selectedSingers: add(state.selectedSingers, action.payload)
             };
         case SingerActionTypes.REMOVE_SINGER:
             return {
                 ...state,
                 selectedSingers: state.selectedSingers.filter(
                     singer => singer.id !== action.payload.id
-                ),
-                checked: !state.checked
+                )
             };
-        // case SingerActionTypes.TOGGLE:
-        //     return{
-        //         ...state,
-                
-        //     }
+        case SingerActionTypes.TOGGLE:
+            return{
+                ...state,
+                checkedArray: toggleFun(state.checkedArray, action.payload)
+            }
         default:
             return state
     }

@@ -6,37 +6,32 @@ export const add = (Array, itemToAdd) => {
     if (existingItem) {
       return Array.map(singer =>
         singer.id === itemToAdd.id
-          ? { ...singer, quantity: singer.quantity + 1 , checked : true }
+          ? { ...singer, quantity: singer.quantity + 1 }
           : singer
       );
     }
   
     return [...Array, { ...itemToAdd, quantity: 1 }];
-  };
-  
-export const removeItemFromCart = (Array, cartItemToRemove) => {
-    const existingCartItem = Array.find(
-      item => item.id === cartItemToRemove.id
-    );
-  
-    if (existingCartItem.quantity === 1) {
-      return Array.filter(item => item.id !== cartItemToRemove.id);
-    }
-  
-    return Array.map(item =>
-        item.id === cartItemToRemove.id
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    );
-  };
+};
 
-// export const saveChanging = (selectedSingersArr, checkedElement) {
-//   const existingItem = selectedSingersArr.find (
-//     selectedSingersArrEl => selectedSingersArrEl.id === checkedElement.id
-//   )
-  
-//   selectedSingersArr.forEach(selected => {
-//       selected.id === checkedElement.id ? setChecked(checked) : setChecked(!checked);
-//     })
-  
+//combine two arrays in one object
+// export const checkedArray = (singerArray) => {
+//   const singersnames = singerArray.map(el => el.name);
+//   const singersCheckedValue = singerArray.map(el => el.checked);
+//   // to convert two array key and value into one object { key[array1] : value[array2] }
+//   return  singersnames.reduce((acc, value, i) => (acc[value] = singersCheckedValue[i], acc), {});
+
 // }
+
+// render array of checked singers
+export const checkedSinger = (Array) => Array.map(el => el.checked);
+// toggle function
+export const toggleFun = (array, index) => {
+  return array.map( (el, indx) => {
+          if(index === indx ) {
+            return !el;
+          } else {
+            return el;
+          }
+        } )
+}

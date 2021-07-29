@@ -1,6 +1,7 @@
 const data = [
     { name:'singer_1',
          id:1,
+         checked:false,
          albums : [
          {name : 'album_1',
           id:1,
@@ -44,6 +45,7 @@ const data = [
         {
      name:'singer_2',
      id:2,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:13,
@@ -78,6 +80,7 @@ const data = [
         {
      name:'singer_3',
      id:3,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:22,
@@ -106,6 +109,7 @@ const data = [
         {
      name:'singer_4',
      id:4,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:29,
@@ -122,6 +126,7 @@ const data = [
         {
      name:'singer_5',
      id:5,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:1,
@@ -159,6 +164,7 @@ const data = [
         {
      name:'singer_6',
      id:6,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:1,
@@ -172,6 +178,7 @@ const data = [
         {
      name:'singer_7',
      id:7,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:1,
@@ -212,6 +219,7 @@ const data = [
         {
      name:'singer_8',
      id:8,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:1,
@@ -240,6 +248,7 @@ const data = [
         {
      name:'singer_9',
      id:9,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:1,
@@ -283,6 +292,7 @@ const data = [
         {
      name:'singer_10',
      id:10,
+     checked:false,
      albums : [
          {name : 'album_1',
           id:1,

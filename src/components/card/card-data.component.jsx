@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
 import { connect } from 'react-redux';
-import { addSinger, removeSinger } from '../../redux/singer/singer.action';
+import { addSinger, removeSinger, toggle } from '../../redux/singer/singer.action';
 
 const useStyles = makeStyles({
     root: {
@@ -29,14 +29,14 @@ const useStyles = makeStyles({
     },
   });
 
-const CardData = ({singer, addSinger, removeSinger, selectedSingers}) => {
+const CardData = ({singer,index, addSinger, removeSinger, selectedSingers, checkedValue, toggle}) => {
     const classes = useStyles();
     const [checked, setChecked] = React.useState(false);
     const handleChange = (event) => {
       setChecked(event.target.checked ? () => addSinger(singer) : () => removeSinger(singer) );
       setChecked(!checked);
     };
-    // console.log(checked);
+    console.log([checkedValue])
     return(
     <Grid item xs={3}>
             <Card className={classes.root}>
@@ -63,7 +63,7 @@ const CardData = ({singer, addSinger, removeSinger, selectedSingers}) => {
                     
                 </CardContent>
                 <CardActions>
-                
+                    {index}
                 </CardActions>
             </Card>
         </Grid>
@@ -71,11 +71,13 @@ const CardData = ({singer, addSinger, removeSinger, selectedSingers}) => {
 
 const mapDispatchToProps = dispatch => ({
     addSinger: singer => dispatch(addSinger(singer)),
-    removeSinger: singer => dispatch(removeSinger(singer))
+    removeSinger: singer => dispatch(removeSinger(singer)),
+    toggle: value => dispatch(toggle(value))
 });
 
 const mapStateToProps = state => ({
-  selectedSingers : state.singer.selectedSingers
+  selectedSingers : state.singer.selectedSingers,
+  checkedValue : state.singer.checked
 })
 
 

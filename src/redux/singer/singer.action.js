@@ -10,7 +10,7 @@ export const removeSinger = singer => ({
     payload: singer
 });
 
-// export const toggle = checkedValue => ({
-//     type:SingerActionTypes.TOGGLE,
-//     payload: checkedValue
-// })
+export const toggle = index => ({
+    type:SingerActionTypes.TOGGLE,
+    payload: index
+})

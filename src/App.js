@@ -1,5 +1,5 @@
 import './App.css';
-import CenteredGrid from './components/grid/grid.component'
+import CenteredGrid from './components/step-container/grid.component'
 
 function App() {
   return (

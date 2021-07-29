@@ -5,7 +5,7 @@ import { add, checkedSinger, toggleFun } from '../utils';
 const INITIAL_STATE = {
     data : data,
     selectedSingers : [],
-    checkedArray : checkedSinger(data)
+    checkedArray : checkedSinger(data) 
 }
 
 const singerReducer = (state = INITIAL_STATE, action) => {

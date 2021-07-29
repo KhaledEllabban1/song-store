@@ -20,7 +20,7 @@ const Album = ({selectedSingers,addAlbum, removeAlbum,checkedArrayOfAlbums, togg
   const classes = useStyles();
   const [search, setSearch ] = useState('');
   const onSearchChange = event => setSearch(event.target.value);
-  const filteredData = selectedSingers.filter(data => data.name.toLowerCase().includes(search.toLowerCase()));
+  const filteredData = selectedAlbums.filter(data => data.name.toLowerCase().includes(search.toLowerCase()));
   const [state, setState] = useState(checkedArrayOfAlbums);
 
   const handleChange = (index,album) => (event) => {
@@ -28,10 +28,10 @@ const Album = ({selectedSingers,addAlbum, removeAlbum,checkedArrayOfAlbums, togg
     setState(event.target.checked ? () => addAlbum(album) : () => removeAlbum(album));
   };
 
-  console.log('search: ',search);
-  console.log("selectedSingers: ",selectedSingers);
-  console.log("selectedAlbums:", selectedAlbums)
-  console.log("checkedArrayOfAlbums: ",checkedArrayOfAlbums);
+//   console.log('search: ',search);
+//   console.log("selectedSingers: ",selectedSingers);
+//   console.log("checkedArrayOfAlbums: ",checkedArrayOfAlbums);
+console.log("selectedAlbums:", selectedAlbums)
   console.log("choosedAlbums:", choosedAlbums)
   return (
     <>

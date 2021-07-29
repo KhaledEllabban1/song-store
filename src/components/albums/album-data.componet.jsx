@@ -30,7 +30,6 @@ const useStyles = makeStyles({
 
 const AlbumData = ({album,index, checkedArrayOfAlbums, handleChange}) => {
     const classes = useStyles();
-    // console.log(checkedArrayOfAlbums);
     return(
             <Grid item xs={3}>
                 <Card className={classes.root}> 
@@ -49,14 +48,7 @@ const AlbumData = ({album,index, checkedArrayOfAlbums, handleChange}) => {
                           Albums number : {album.songs.length}
                           
                         </Typography>
-                        {/* {
-                          singer.songs.map(album => {
-                            return ( <p> {album.name}  </p> )
-                          })
-                        } */}
-                        
-                      
-
+                       
                         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" >
                             <Button>Add</Button>
                             <Button>Remove</Button>

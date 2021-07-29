@@ -16,13 +16,12 @@ const useStyles = makeStyles({
     }
 });
 
-const Singer = ({ data , selectedSingers,addSinger, removeSinger,checkedArray, toggle,selectedAlbums }) => {
+const Singer = ({ data , selectedSingers,addSinger, removeSinger,checkedArray, toggle }) => {
   const classes = useStyles();
   const [search, setSearch ] = useState('');
   const onSearchChange = event => setSearch(event.target.value);
   const filteredData = data.filter(data => data.name.toLowerCase().includes(search.toLowerCase()));
   const [state, setState] = useState(checkedArray);
-  const [album, setAlbum] = useState(selectedAlbums)
 
   const handleChange = (index,singer) => (event) => {
     toggle(index);
@@ -32,7 +31,6 @@ const Singer = ({ data , selectedSingers,addSinger, removeSinger,checkedArray, t
   // console.log('search: ',search);
   // console.log("selectedSingers: ",selectedSingers);
   // console.log("checkedArray: ",checkedArray);
-  // console.log("selectedAlbums:" , selectedAlbums)
   return (
     <>
         <form className={classes.root} noValidate autoComplete="off">      
@@ -62,9 +60,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
     data: state.singer.data,
     selectedSingers : state.singer.selectedSingers,
-    checkedArray : state.singer.checkedArray,
-    // not related
-    selectedAlbums: state.singer.selectedAlbums
+    checkedArray : state.singer.checkedArray
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Singer);

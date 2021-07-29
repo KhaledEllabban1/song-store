@@ -32,12 +32,6 @@ export const remove = (array, itemToRemove) => {
 // render array of checked singers
 export const checkedSinger = (Array) => Array.map(el => el.checked);
 
-// render array of checked albums
-export const checkedAlbum = (Array) =>{
-  return  Array[0].albums.map(el => el.checked)
-}
-
-
 // toggle function
 export const toggleFun = (array, index) => {
   return array.map( (el, indx) => {

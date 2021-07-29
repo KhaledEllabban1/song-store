@@ -48,14 +48,6 @@ const CardData = ({singer,index, checkedArray, handleChange}) => {
                           Albums number : {singer.albums.length}
                           
                         </Typography>
-                        {
-                          // singer.albums.map(album => {
-                          //   return ( <p> {album.name}  </p> )
-                          //   // return ( <AlbumData album= {album} /> )
-                          // })
-                        }
-                        
-                      
 
                         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" >
                             <Button>Add</Button>

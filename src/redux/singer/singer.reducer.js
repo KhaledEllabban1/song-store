@@ -7,20 +7,11 @@ const INITIAL_STATE = {
     selectedSingers : [],
     checkedArray : checkedSinger(data),
     selectedAlbums : [],
-    // checkedArrayOfAlbums: () => {
-    //     const checked = this.selectedAlbums
-    //     if(checked == undefined){
-    //         return null
-    //     } else {
-    //         return checked.map(el => el.checked);
-    //     }
-    // },
     checkedArrayOfAlbums : [],
     choosedAlbums : [] 
 }
 
 const singerReducer = (state = INITIAL_STATE, action) => {
-    // console.log(selectSingers)
     switch (action.type) {
         case SingerActionTypes.ADD_SINGER : 
             return {

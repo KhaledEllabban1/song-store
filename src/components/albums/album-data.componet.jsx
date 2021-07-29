@@ -28,26 +28,33 @@ const useStyles = makeStyles({
     },
   });
 
-const CardData = ({singer,index, checkedArray, handleChange}) => {
+const AlbumData = ({album,index, checkedArrayOfAlbums, handleChange}) => {
     const classes = useStyles();
-
+    // console.log(checkedArrayOfAlbums);
     return(
             <Grid item xs={3}>
                 <Card className={classes.root}> 
                     <CardContent>
                         <Typography variant="h5" component="h2">
                             <Checkbox
-                                value = {singer.name}
-                                checked={checkedArray[index]} 
-                                onChange={handleChange(index,singer)}
+                                value = {album.name}
+                                checked={checkedArrayOfAlbums[index]} 
+                                onChange={handleChange(index,album)}
                                 inputProps={{ 'aria-label': 'primary checkbox' }}
                             />
-                            {singer.name}
+                            {album.name}
                             
                         </Typography>
                         <Typography className={classes.pos} color="textSecondary">
-                          Albums number : {singer.albums.length}
+                          Albums number : {album.songs.length}
+                          
                         </Typography>
+                        {/* {
+                          singer.songs.map(album => {
+                            return ( <p> {album.name}  </p> )
+                          })
+                        } */}
+                        
                       
 
                         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" >
@@ -66,8 +73,8 @@ const CardData = ({singer,index, checkedArray, handleChange}) => {
 
 
 const mapStateToProps = state => ({
-    checkedArray : state.singer.checkedArray
+    checkedArrayOfAlbums : state.singer.checkedArrayOfAlbums
 });
 
 
-export default connect(mapStateToProps)(CardData);
+export default connect(mapStateToProps)(AlbumData); 

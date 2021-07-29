@@ -5,7 +5,8 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import SimpleCard from '../singer/card.component';
+import Singer from '../singer/singer.component';
+import Album from '../albums/album.component';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,9 +28,9 @@ function getSteps() {
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return <SimpleCard />;
+      return <Singer />;
     case 1:
-      return 'Select Albums11111111111111111';
+      return <Album />;
     case 2:
       return 'Select Songs22222222222222';
     case 3:

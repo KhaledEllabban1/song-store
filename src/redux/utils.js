@@ -14,6 +14,12 @@ export const add = (Array, itemToAdd) => {
     return [...Array, { ...itemToAdd, quantity: 1 }];
 };
 
+export const remove = (array, itemToRemove) => {
+  return array.filter(
+    el => el.id !== itemToRemove.id
+  )
+}
+
 //combine two arrays in one object
 // export const checkedArray = (singerArray) => {
 //   const singersnames = singerArray.map(el => el.name);
@@ -25,6 +31,13 @@ export const add = (Array, itemToAdd) => {
 
 // render array of checked singers
 export const checkedSinger = (Array) => Array.map(el => el.checked);
+
+// render array of checked albums
+export const checkedAlbum = (Array) =>{
+  return  Array[0].albums.map(el => el.checked)
+}
+
+
 // toggle function
 export const toggleFun = (array, index) => {
   return array.map( (el, indx) => {
@@ -34,4 +47,19 @@ export const toggleFun = (array, index) => {
             return el;
           }
         } )
+}
+
+// selected Albums
+export const selectedAlbum = (array) => {
+   const albums= array.map(el => el.albums);
+   return flatten(albums)
+}
+// combine arrays in one array
+
+export const flatten = (arr) => {
+    var flat = [];
+    for (var i = 0; i < arr.length; i++) {
+        flat = flat.concat(arr[i]);
+    }
+    return flat;
 }

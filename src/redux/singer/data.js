@@ -5,39 +5,51 @@ const data = [
          albums : [
          {name : 'album_1',
           id:1,
+          checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3} ,{songName:'song4', id : 4} ,{songName:'song5', id : 5}, {songName:'song6', id : 6}  ]
          },{name : 'album_2',
           id:2,
+          checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_3',
             id:3,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_4',
             id:4,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_5',
             id:5,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_6',
             id:6,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_7',
             id:7,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_8',
             id:8,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_9',
             id:9,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_10',
             id:10,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_11',
             id:11,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },{name : 'album_12',
             id:12,
+            checked:false,
           songs : [{songName:'song1', id : 1}, {songName:'song2', id : 2},  {songName:'song3', id : 3}, {songName:'song4', id : 4},{songName:'song5', id : 5}, {songName:'song6', id : 6}]
          },
        ]

@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import CardData from './card-data.component';
+import CardData from './singer-data.component';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addSinger, removeSinger, toggle } from '../../redux/singer/singer.action';
@@ -16,21 +16,23 @@ const useStyles = makeStyles({
     }
 });
 
-const SimpleCard = ({ data , selectedSingers,addSinger, removeSinger,checkedArray, toggle }) => {
+const Singer = ({ data , selectedSingers,addSinger, removeSinger,checkedArray, toggle,selectedAlbums }) => {
   const classes = useStyles();
   const [search, setSearch ] = useState('');
   const onSearchChange = event => setSearch(event.target.value);
   const filteredData = data.filter(data => data.name.toLowerCase().includes(search.toLowerCase()));
   const [state, setState] = useState(checkedArray);
+  const [album, setAlbum] = useState(selectedAlbums)
 
   const handleChange = (index,singer) => (event) => {
     toggle(index);
     setState(event.target.checked ? () => addSinger(singer) : () => removeSinger(singer));
   };
 
-  console.log('search: ',search);
-  console.log("selectedSingers: ",selectedSingers);
-  console.log("checkedArray: ",checkedArray);
+  // console.log('search: ',search);
+  // console.log("selectedSingers: ",selectedSingers);
+  // console.log("checkedArray: ",checkedArray);
+  // console.log("selectedAlbums:" , selectedAlbums)
   return (
     <>
         <form className={classes.root} noValidate autoComplete="off">      
@@ -60,7 +62,9 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
     data: state.singer.data,
     selectedSingers : state.singer.selectedSingers,
-    checkedArray : state.singer.checkedArray
+    checkedArray : state.singer.checkedArray,
+    // not related
+    selectedAlbums: state.singer.selectedAlbums
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(SimpleCard);
+export default connect(mapStateToProps,mapDispatchToProps)(Singer);

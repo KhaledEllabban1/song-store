@@ -28,25 +28,40 @@ const useStyles = makeStyles({
     },
   });
 
-const AlbumData = ({album,index, checkedArrayOfAlbums, handleChange}) => {
+const SongData = ({song,index, checkedArrayOfSongs, handleChange}) => {
     const classes = useStyles();
     return(
             <Grid item xs={3}>
                 <Card className={classes.root}> 
                     <CardContent>
                         <Typography variant="h5" component="h2">
-                            <Checkbox
-                                value = {album.name}
-                                checked={checkedArrayOfAlbums[index]} 
-                                onChange={handleChange(index,album)}
-                                inputProps={{ 'aria-label': 'primary checkbox' }}
-                            />
-                            {album.name}
+                             <Checkbox
+                              value = {song.songName}
+                              checked={checkedArrayOfSongs[index]} 
+                              onChange={handleChange(index,song)}
+                              inputProps={{ 'aria-label': 'primary checkbox' }}
+                              />
+                            {song.songName}
                         </Typography>
                         <Typography className={classes.pos} color="textSecondary">
-                          Albums number : {album.songs.length}
-                          
-                        </Typography>
+                        
+                        {/* {
+                          album.songs.map((el,index) => 
+                            (
+                            <div  key={Math.floor(Math.random() * 1000000)}>   
+                              <Checkbox
+                              value = {el.songName}
+                              checked={checkedArrayOfSongs[index]} 
+                              onChange={handleChange(index,el)}
+                              inputProps={{ 'aria-label': 'primary checkbox' }}
+                              />
+                              {el.songName} --------
+                              {index} 
+                            </div>
+                            
+                            ))
+                        } */}
+                      </Typography>
                        
                         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" >
                             <Button>Add</Button>
@@ -64,8 +79,8 @@ const AlbumData = ({album,index, checkedArrayOfAlbums, handleChange}) => {
 
 
 const mapStateToProps = state => ({
-    checkedArrayOfAlbums : state.singer.checkedArrayOfAlbums
+    checkedArrayOfSongs : state.singer.checkedArrayOfSongs
 });
 
 
-export default connect(mapStateToProps)(AlbumData); 
+export default connect(mapStateToProps)(SongData); 

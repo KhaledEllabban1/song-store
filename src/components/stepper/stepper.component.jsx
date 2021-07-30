@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Singer from '../singer/singer.component';
 import Album from '../albums/album.component';
+import Song from '../songs/song.component'; 
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +33,7 @@ function getStepContent(stepIndex) {
     case 1:
       return <Album />;
     case 2:
-      return 'Select Songs22222222222222';
+      return <Song />;
     case 3:
       return 'Enter your Data3333333333333';
     case 4:

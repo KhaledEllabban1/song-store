@@ -45,7 +45,7 @@ export const toggleFun = (array, index) => {
 
 // selected Albums
 export const selectedAlbum = (array) => {
-   const albums= array.map(el => el.albums);
+   const albums = array.map(el => el.albums);
    return flatten(albums)
 }
 // combine arrays in one array
@@ -56,4 +56,10 @@ export const flatten = (arr) => {
         flat = flat.concat(arr[i]);
     }
     return flat;
+}
+// selected Albums
+export const selectedSongs = (array) => {
+  const songs = array.map(el => el.songs);
+  
+  return flatten(songs)
 }

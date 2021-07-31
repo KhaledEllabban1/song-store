@@ -43,25 +43,6 @@ const SongData = ({song,index, checkedArrayOfSongs, handleChange}) => {
                               />
                             {song.songName}
                         </Typography>
-                        <Typography className={classes.pos} color="textSecondary">
-                        
-                        {/* {
-                          album.songs.map((el,index) => 
-                            (
-                            <div  key={Math.floor(Math.random() * 1000000)}>   
-                              <Checkbox
-                              value = {el.songName}
-                              checked={checkedArrayOfSongs[index]} 
-                              onChange={handleChange(index,el)}
-                              inputProps={{ 'aria-label': 'primary checkbox' }}
-                              />
-                              {el.songName} --------
-                              {index} 
-                            </div>
-                            
-                            ))
-                        } */}
-                      </Typography>
                        
                         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" >
                             <Button>Add</Button>

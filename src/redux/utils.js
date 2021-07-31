@@ -1,17 +1,9 @@
 export const add = (Array, itemToAdd) => {
-    const existingItem = Array.find(
-        singer => singer.id === itemToAdd.id
-    );
-  
-    if (existingItem) {
-      return Array.map(singer =>
-        singer.id === itemToAdd.id
-          ? { ...singer, quantity: singer.quantity + 1 }
-          : singer
-      );
-    }
-  
-    return [...Array, { ...itemToAdd, quantity: 1 }];
+    return [...Array, {...itemToAdd}];
+};
+
+export const addItemWithPrice = (Array, itemToAdd) => {
+  return [...Array, { ...itemToAdd, count:1 ,price: 2 }];
 };
 
 export const remove = (array, itemToRemove) => {

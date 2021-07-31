@@ -44,7 +44,7 @@ const AlbumData = ({album,index, checkedArrayOfAlbums, handleChange}) => {
                             {album.name}
                         </Typography>
                         <Typography className={classes.pos} color="textSecondary">
-                          Albums number : {album.songs.length}
+                          songs number : {album.songs.length}
                           
                         </Typography>
                        

@@ -1,26 +1,11 @@
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import AlbumData from './album-data.componet';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { addAlbum, removeAlbum, toggleAlbum } from '../../redux/singer/singer.action';
 import React from 'react';
 
-const useStyles = makeStyles({
-    root: {
-      flexGrow: 1
-    },
-    pos: {
-        marginBottom: 40,
-    }
-});
-
-const Album = ({selectedSingers,addAlbum, removeAlbum,checkedArrayOfAlbums, toggleAlbum, selectedAlbums, choosedAlbums}) => {
-  const classes = useStyles();
-  const [search, setSearch ] = useState('');
-  const onSearchChange = event => setSearch(event.target.value);
-  const filteredData = selectedAlbums.filter(data => data.name.toLowerCase().includes(search.toLowerCase()));
+const Album = ({addAlbum, removeAlbum,checkedArrayOfAlbums, toggleAlbum, selectedAlbums, choosedAlbums}) => {
   const [state, setState] = useState(checkedArrayOfAlbums);
 
   const handleChange = (index,album) => (event) => {
@@ -28,16 +13,12 @@ const Album = ({selectedSingers,addAlbum, removeAlbum,checkedArrayOfAlbums, togg
     setState(event.target.checked ? () => addAlbum(album) : () => removeAlbum(album));
   };
 
-//   console.log('search: ',search);
 //   console.log("selectedSingers: ",selectedSingers);
 //   console.log("checkedArrayOfAlbums: ",checkedArrayOfAlbums);
-console.log("selectedAlbums:", selectedAlbums)
-  console.log("choosedAlbums:", choosedAlbums)
+  console.log("selectedAlbums:", selectedAlbums);
+  console.log("choosedAlbums:", choosedAlbums);
+  
   return (
-    <>
-        <form className={classes.root} noValidate autoComplete="off">      
-            <TextField id="outlined-basic" className={classes.pos} label="search" variant="outlined" onChange={onSearchChange } />
-        </form>
         <Grid container spacing={7} justifyContent="space-around">
             {
                 selectedAlbums.map((album, index) => {
@@ -47,9 +28,6 @@ console.log("selectedAlbums:", selectedAlbums)
                 })
             }
         </Grid>
-    </>
-
-
   );
 }
 const mapDispatchToProps = dispatch => ({
@@ -59,7 +37,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-    selectedSingers : state.singer.selectedSingers,
     checkedArrayOfAlbums : state.singer.checkedArrayOfAlbums,
     selectedAlbums: state.singer.selectedAlbums,
     choosedAlbums: state.singer.choosedAlbums

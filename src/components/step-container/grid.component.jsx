@@ -2,7 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import HorizontalLabelPositionBelowStepper from '../stepper/stepper.component'
+import HorizontalLabelPositionBelowStepper from '../stepper/stepper.component';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectChoosedSongsCount, selectChoosedSongsTotal, selectChoosedSongs } from '../../redux/singer/singer.selector';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,9 +19,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CenteredGrid = () => {
+const CenteredGrid = ({count, total}) => {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <Grid container spacing={2} >
@@ -25,13 +28,17 @@ const CenteredGrid = () => {
           <HorizontalLabelPositionBelowStepper />
         </Grid>
         <Grid item xs={12} container justifyContent="space-around">
-          <Paper className={classes.paper}> count = 0 </Paper>
+          <Paper className={classes.paper}> count = {count} </Paper>
 
-          <Paper className={classes.paper}> Amount = 0  </Paper>
+          <Paper className={classes.paper}> Amount = {total}  </Paper>
         </Grid>
         
       </Grid>
     </div>
   );
 }
-export default CenteredGrid;
+const mapDispatchToProps = createStructuredSelector({
+  count: selectChoosedSongsCount,
+  total: selectChoosedSongsTotal
+})
+export default connect(mapDispatchToProps)(CenteredGrid);

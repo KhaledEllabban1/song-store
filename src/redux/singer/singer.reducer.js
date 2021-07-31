@@ -1,6 +1,6 @@
 import SingerActionTypes from './singer.types';
 import data from './data';
-import { add, remove, checkedSinger, toggleFun, selectedAlbum, selectedSongs } from '../utils';
+import { add, remove, checkedSinger, toggleFun, selectedAlbum, selectedSongs, addItemWithPrice } from '../utils';
 
 const INITIAL_STATE = {
     data : data,
@@ -23,7 +23,9 @@ const singerReducer = (state = INITIAL_STATE, action) => {
                 selectedSingers: add(state.selectedSingers, action.payload),
                 selectedAlbums: selectedAlbum(add(state.selectedSingers, action.payload)),
                 checkedArrayOfAlbums: selectedAlbum(add(state.selectedSingers, action.payload)).fill(false),
-                choosedAlbums:[]
+                choosedAlbums:[],
+                choosedSongs: [],
+                selectedSongs:[]
             };
         case SingerActionTypes.REMOVE_SINGER:
             return {
@@ -31,7 +33,9 @@ const singerReducer = (state = INITIAL_STATE, action) => {
                 selectedSingers: remove(state.selectedSingers, action.payload),
                 selectedAlbums: selectedAlbum(remove(state.selectedSingers, action.payload)),
                 checkedArrayOfAlbums: selectedAlbum(remove(state.selectedSingers, action.payload)).fill(false),
-                choosedAlbums:[] // to reset when go back and edit
+                choosedAlbums:[], // to reset when go back and edit
+                choosedSongs: [], // to set the count and the price when editing
+                selectedSongs:[] //  to reset when to go two step back without edit album then edit singer then go two step forword
             };
         case SingerActionTypes.TOGGLE:
             return{
@@ -64,7 +68,7 @@ const singerReducer = (state = INITIAL_STATE, action) => {
         case SingerActionTypes.ADD_SONG : 
             return {
                 ...state,
-                choosedSongs:add(state.choosedSongs, action.payload)
+                choosedSongs:addItemWithPrice(state.choosedSongs, action.payload)
             }
         case SingerActionTypes.REMOVE_SONG :
             return {

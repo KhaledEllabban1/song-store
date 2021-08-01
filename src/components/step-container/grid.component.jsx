@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import HorizontalLabelPositionBelowStepper from '../stepper/stepper.component';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectChoosedSongsCount, selectChoosedSongsTotal, selectChoosedSongs } from '../../redux/singer/singer.selector';
+import { selectChoosedSongsCount, selectChoosedSongsTotal } from '../../redux/singer/singer.selector';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  pos: {
+    marginBottom:20 ,
+   }
 }));
 
 const CenteredGrid = ({count, total}) => {
@@ -24,10 +27,10 @@ const CenteredGrid = ({count, total}) => {
   return (
     <div className={classes.root}>
       <Grid container spacing={2} >
-        <Grid item xs={12}>
+        <Grid item xs={9}>
           <HorizontalLabelPositionBelowStepper />
         </Grid>
-        <Grid item xs={12} container justifyContent="space-around">
+        <Grid item xs={3} className={classes.pos} container justifyContent="space-around">
           <Paper className={classes.paper}> count = {count} </Paper>
 
           <Paper className={classes.paper}> Amount = {total}  </Paper>

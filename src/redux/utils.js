@@ -55,3 +55,14 @@ export const selectedSongs = (array) => {
   
   return flatten(songs)
 }
+
+// count 
+export const count = (array) => {
+  return array.reduce(
+    (accumalatedQuantity, el) => accumalatedQuantity + el.count ,0)
+}
+// total 
+export const total = (array) => {
+  return array.reduce(
+    (accumalatedQuantity, el) => accumalatedQuantity + el.count * el.price ,0)
+}

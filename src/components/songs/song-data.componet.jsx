@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
 import { connect } from 'react-redux';
+import { userData } from '../../redux/user/user.action';
 
 const useStyles = makeStyles({
     root: {
@@ -30,6 +31,9 @@ const useStyles = makeStyles({
 
 const SongData = ({song,index, checkedArrayOfSongs, handleChange}) => {
     const classes = useStyles();
+    useEffect(() => {
+      userData({})
+    });
     return(
             <Grid item xs={3}>
                 <Card className={classes.root}> 
@@ -63,5 +67,8 @@ const mapStateToProps = state => ({
     checkedArrayOfSongs : state.singer.checkedArrayOfSongs
 });
 
+const mapDispatchToProps = dispatch => ({
+    userData : ({}) => dispatch(userData({}))
+})
 
-export default connect(mapStateToProps)(SongData); 
+export default connect(mapStateToProps, mapDispatchToProps)(SongData); 

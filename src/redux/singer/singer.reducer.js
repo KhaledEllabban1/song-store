@@ -1,6 +1,6 @@
 import SingerActionTypes from './singer.types';
 import data from './data';
-import { add, remove, checkedSinger, toggleFun, selectedAlbum, selectedSongs, addItemWithPrice } from '../utils';
+import { add, remove, checkedSinger, toggleFun, selectedAlbum, selectedSongs, addItemWithPrice,count,total } from '../utils';
 
 const INITIAL_STATE = {
     data : data,
@@ -11,7 +11,9 @@ const INITIAL_STATE = {
     choosedAlbums : [],
     selectedSongs : [],
     checkedArrayOfSongs : [],
-    choosedSongs : []
+    choosedSongs : [],
+    count: 0,
+    total: 0
 }
 
 const singerReducer = (state = INITIAL_STATE, action) => {
@@ -68,12 +70,17 @@ const singerReducer = (state = INITIAL_STATE, action) => {
         case SingerActionTypes.ADD_SONG : 
             return {
                 ...state,
-                choosedSongs:addItemWithPrice(state.choosedSongs, action.payload)
+                choosedSongs:addItemWithPrice(state.choosedSongs, action.payload),
+                count:count(addItemWithPrice(state.choosedSongs, action.payload)),
+                total: total(addItemWithPrice(state.choosedSongs, action.payload))
             }
         case SingerActionTypes.REMOVE_SONG :
             return {
                 ...state,
-                choosedSongs:remove(state.choosedSongs, action.payload)
+                choosedSongs:remove(state.choosedSongs, action.payload),
+                count:count(remove(state.choosedSongs, action.payload)),
+                total: total(remove(state.choosedSongs, action.payload))
+                
             }
         case SingerActionTypes.TOGGLE_SONG :
             return {

@@ -6,7 +6,6 @@ export const selectChoosedSongs = createSelector(
     [selectSinger],
     singer => singer.choosedSongs
 );
-
 export const selectChoosedSongsCount = createSelector(
     [selectChoosedSongs],
     choosedSongs => choosedSongs.reduce(

@@ -7,8 +7,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Singer from '../singer/singer.component';
 import Album from '../albums/album.component';
-import Song from '../songs/song.component'; 
-
+import Song from '../songs/song.component';
+import Subscribe from '../subscribe/subscribe.componet';
+import Receipt from '../receipt/receipt.component';
+import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -20,10 +22,20 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
+  pos: {
+    marginTop:50,
+    marginBottom:20 
+  },
+  down: {
+    marginTop:50,
+  },
+  button: {
+    marginBottom:30,
+  }
 }));
 
 function getSteps() {
-  return ['Select Singers', 'Select Albums', 'Select Songs', 'Enter your Data' ,'Receipt'];
+  return ['Select Singers', 'Select Albums', 'Select Songs', 'Enter your Data'];
 }
 
 function getStepContent(stepIndex) {
@@ -35,7 +47,7 @@ function getStepContent(stepIndex) {
     case 2:
       return <Song />;
     case 3:
-      return 'Enter your Data3333333333333';
+      return <Subscribe/>;
     case 4:
       return 'Receipt4444444444444444444';
     default:
@@ -43,11 +55,13 @@ function getStepContent(stepIndex) {
   }
 }
 
-const HorizontalLabelPositionBelowStepper = () => {
+const HorizontalLabelPositionBelowStepper = ({userData, choosedSongs}) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-
+  console.log(userData)
+  console.log(choosedSongs)
+  
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -71,14 +85,16 @@ const HorizontalLabelPositionBelowStepper = () => {
       </Stepper>
       <div>
         {activeStep === steps.length ? (
-          <div>
+        <>
+          <Receipt />
+          <div className={classes.down}>
             <Typography className={classes.instructions}>All steps completed</Typography>
-            <Button onClick={handleReset}>Reset</Button>
           </div>
+        </>
         ) : (
-          <div>
+          <div> 
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-            <div>
+            <div className={classes.pos}>
               <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
@@ -86,9 +102,20 @@ const HorizontalLabelPositionBelowStepper = () => {
               >
                 Back
               </Button>
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
+              {
+                activeStep === steps.length - 1 ? (
+                    userData === null ?  null : ( 
+                      <Button variant="contained" color="primary" onClick={handleNext}>
+                        Finish
+                      </Button>
+                     )
+                  
+                ) : (
+                  <Button variant="contained" color="primary" onClick={handleNext}>
+                    next
+                  </Button>
+                )
+              }
             </div>
           </div>
         )}
@@ -96,4 +123,8 @@ const HorizontalLabelPositionBelowStepper = () => {
     </div>
   );
 }
-export default HorizontalLabelPositionBelowStepper;
+const mapStateToProps = state => ({
+  userData: state.user.userData,
+  choosedSongs : state.singer.choosedSongs
+})
+export default connect(mapStateToProps)(HorizontalLabelPositionBelowStepper);

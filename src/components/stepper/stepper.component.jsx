@@ -68,9 +68,9 @@ const HorizontalLabelPositionBelowStepper = ({userData}) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
 
   return (
     <div className={classes.root}>
@@ -87,11 +87,16 @@ const HorizontalLabelPositionBelowStepper = ({userData}) => {
           <Receipt />
           <div className={classes.down}>
             <Typography className={classes.instructions}>All steps completed</Typography>
+            <Button onClick={handleBack}>back</Button>
+            {/* {
+              userData !== null ? (<Button onClick={handleBack}>back</Button>) : null 
+            } */}
+            
           </div>
         </>
         ) : (
           <div> 
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            <Typography component={'span'} className={classes.instructions}>{getStepContent(activeStep)} </Typography>
             <div className={classes.pos}>
               <Button
                 disabled={activeStep === 0}

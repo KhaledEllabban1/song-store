@@ -1,4 +1,6 @@
 import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
 import SongData from './song-data.componet';
 import { useState } from 'react';
 import { connect } from 'react-redux';
@@ -22,16 +24,24 @@ const Song = ({addSong, removeSong,checkedArrayOfSongs, toggleSong, choosedAlbum
   // console.log("choosedSongs:", choosedSongs)
   return (
 
-        <Grid container spacing={7} justifyContent="space-around">
+        <Grid container spacing={1} justifyContent="center">
             {
-              choosedAlbums.map(album => (<p> {album.name} </p>))
+              choosedAlbums.map(album => (
+                <Grid item xs={12} >
+                  <Card style={{backgroundColor:'#ccc', maxWidth:200}}> 
+                      <Typography> {album.name} </Typography>
+                  </Card>
+               </Grid>
+                ))
             }
+            <br  />
             {
+              selectedSongs.length ? 
                 selectedSongs.map((song, index) => {
                   return(
                     <SongData  key={song.id} song= {song} index = {index} handleChange = {handleChange } />
                   )  
-                })
+                }) : (<span className='choose'> Choose album </span>)
             }
         </Grid>
   );

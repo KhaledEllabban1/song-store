@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,54 +6,66 @@ import Typography from '@material-ui/core/Typography';
 import PrintIcon from '@material-ui/icons/Print';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { selectChoosedSongsCount, selectChoosedSongsTotal } from '../../redux/singer/singer.selector';
-
 
 const useStyles = makeStyles({
     root: {
       minWidth: 275,
       flexGrow: 1,
-      boxShadow:0
+      boxShadow:0,
+      textAlign: 'center'
     },
     title: {
       fontSize: 14,
     },
     pos: {
       margin:20,
+      padding:10
     },
     button: {
       marginBottom:20,
+      marginTop:20
     }
   });
 
 
 const Receipt = ({userData, choosedSongs,count, total}) => {
   const classes = useStyles();
- 
+  console.log(choosedSongs);
+  console.log('one')
   return (
-        <Grid key={Math.floor(Math.random() * 1000000)} container spacing={7} justifyContent="space-around">
-            <Card key={Math.floor(Math.random() * 1000000)} className={classes.root}> 
-                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.pos} variant="h5" component="h2">
-                        Name : {userData.name}
+        <Grid  key={Math.floor(Math.random() * 1000000)} container spacing={7} justifyContent="space-around">
+            {
+              userData.name && userData.email && userData.mobile !== '' ?
+              (
+                <div key={Math.floor(Math.random() * 1000000)} className={classes.root}> 
+                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.button} variant="h5" component={'span'}>
+                        <span className="recipt_name"> Name : </span> {userData.name} 
                     </Typography>
 
-                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.pos} variant="h5" component="h2">
-                        Email : {userData.email}
+                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.button} variant="h5" component={'span'}>
+                       <span className="recipt_name"> Email :   </span> {userData.email}
                     </Typography>
 
-                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.pos} variant="h5" component="h2">
-                        Mobile : {userData.mobile}
+                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.button} variant="h5" component={'span'}>
+                       <span className="recipt_name"> Mobile :  </span> {userData.mobile}
                     </Typography>
-                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.pos} variant="h5" component="h2">
+                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.button} variant="h5" component={'span'}>
+                       <span className="recipt_name"> Choosed Songs :  </span>
                         {
-                            choosedSongs.map(el => (<p>Choosed Song : {el.songName} </p>))
+                            choosedSongs.map(el => (
+                              <Grid container xs={12}  justifyContent="space-around" alignItems="center">
+                                <Grid item> 
+                                  <Card className={classes.pos}> {el.songName} </Card>
+                                </Grid>
+                              </Grid>
+                            ))
                         }
                      </Typography>
-                     <Typography key={Math.floor(Math.random() * 1000000)} className={classes.pos} variant="h5" component="h2">
-                        Count : {count}
+                     <Typography key={Math.floor(Math.random() * 1000000)} className={classes.pos} variant="h5" component={'span'}>
+                         <span className="recipt_name"> Count :  </span> {count}
                     </Typography>
-                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.pos} variant="h5" component="h2">
-                        Total : {total}
+                    <Typography key={Math.floor(Math.random() * 1000000)} className={classes.pos} variant="h5" component={'span'}>
+                       <span className="recipt_name"> Total : </span> {total}
                     </Typography>
                     
                     <Button
@@ -67,7 +79,9 @@ const Receipt = ({userData, choosedSongs,count, total}) => {
                         Print
                     </Button>
                     
-            </Card>
+            </div>
+              ) : (<span className='choose'> Enter your Data </span>)
+            }
         </Grid>
   );
 }

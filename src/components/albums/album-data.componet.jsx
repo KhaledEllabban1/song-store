@@ -1,18 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
 import { connect } from 'react-redux';
+import AlbumIcon from '@material-ui/icons/Album';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles({
     root: {
-      minWidth: 275,
+      minWidth: 250,
       flexGrow: 1
     },
     bullet: {
@@ -31,33 +30,32 @@ const useStyles = makeStyles({
 const AlbumData = ({album,index, checkedArrayOfAlbums, handleChange}) => {
     const classes = useStyles();
     return(
-            <Grid item xs={3}>
+             <Grid item xs={12} sm={6} md={4} xl={3}>
                 <Card className={classes.root}> 
                     <CardContent>
-                        <Typography variant="h5" component="h2">
-                            <Checkbox
+                        <Typography variant="h5" component={'span'}>
+                            <FormControlLabel
+                              control={
+                                <Checkbox
                                 value = {album.name}
                                 checked={checkedArrayOfAlbums[index]} 
                                 onChange={handleChange(index,album)}
+                                icon={<AlbumIcon />}
+                                checkedIcon = {<AlbumIcon />}
                                 inputProps={{ 'aria-label': 'primary checkbox' }}
+                                color="primary"
                             />
-                            {album.name}
+                              }
+                              label = {album.name}
+                            />
                         </Typography>
-                        <Typography className={classes.pos} color="textSecondary">
+                        <Typography className={classes.pos} color="textSecondary" component={'span'}>
                           songs number : {album.songs.length}
                           
                         </Typography>
-                       
-                        <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" >
-                            <Button>Add</Button>
-                            <Button>Remove</Button>
-                        </ButtonGroup>
 
-                        
                     </CardContent>
-                    <CardActions>
-                        {index}
-                    </CardActions>
+
                 </Card>
             </Grid>
 )};

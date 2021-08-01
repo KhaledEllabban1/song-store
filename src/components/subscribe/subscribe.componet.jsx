@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   });
 
 
-const Subscribe = ({userData}) => {
+const Subscribe = ({userData, choosedSongs, user}) => {
   const classes = useStyles();
   const [ userCredentials, setCredentials ] = useState({
     name: '',
@@ -46,22 +46,25 @@ const Subscribe = ({userData}) => {
     };
   
   return (
-        <Grid container spacing={7} justifyContent="space-around">
+    <Grid container spacing={7} justifyContent="space-around">
+        {
+          choosedSongs.length ?
+          (
             <Card className={classes.root}> 
               <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
-                    <Typography className={classes.pos} variant="h5" component="h2">
+                    <Typography className={classes.pos} variant="h5" component={'span'}>
                         <TextField id="outlined-basic" label="Name" variant="outlined"  
                           name='name'
                           value={name}
                           onChange={handleChange}/>
                     </Typography>
-                    <Typography className={classes.pos} variant="h5" component="h2">
+                    <Typography className={classes.pos} variant="h5" component={'span'}>
                         <TextField id="outlined-basic" label="Email" type="email" variant="outlined"
                         name='email'
                         value={email}
                         onChange={handleChange}/>
                     </Typography>
-                    <Typography className={classes.pos} variant="h5" component="h2">
+                    <Typography className={classes.pos} variant="h5" component={'span'}>
                         <TextField id="outlined-basic" label="Mobile" type="number" variant="outlined"
                         name='mobile'
                         value={mobile}
@@ -71,6 +74,7 @@ const Subscribe = ({userData}) => {
                         variant="contained"
                         color="primary"
                         type="submit"
+                        // disabled= {user !== null ? true : false}
                         className={classes.button}
                         endIcon={<SendIcon>send</SendIcon>}
                     >
@@ -78,7 +82,9 @@ const Subscribe = ({userData}) => {
                     </Button>
                </form>        
             </Card>
-        </Grid>
+          ) : (<span className='choose'> Choose Songs </span>)
+        }
+      </Grid>
   );
 }
 
@@ -86,4 +92,8 @@ const mapDispatchToProps = dispatch => ({
   userData: userCredentials => dispatch(userData(userCredentials))
 });
 
-export default connect(null, mapDispatchToProps)(Subscribe);
+const mapStateToProps = state => ({
+  choosedSongs : state.singer.choosedSongs,
+  user : state.singer.userData
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Subscribe);

@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    marginBottom:20 ,
+    fontSize:20
   },
   pos: {
     marginBottom:20 ,
@@ -26,14 +28,14 @@ const CenteredGrid = ({count, total}) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Grid container spacing={2} >
-        <Grid item xs={9}>
+      <Grid container spacing={2} alignItems="flex-start">
+        <Grid item xs={12}>
           <HorizontalLabelPositionBelowStepper />
         </Grid>
-        <Grid item xs={3} className={classes.pos} container justifyContent="space-around">
-          <Paper className={classes.paper}> count = {count} </Paper>
+        <Grid item xs={12}  className={classes.pos} container  justifyContent="space-around">
+          <Paper className={classes.paper}> count = <span className='count_total'>  {count} </span>  </Paper>
 
-          <Paper className={classes.paper}> Amount = {total}  </Paper>
+          <Paper className={classes.paper}> Amount = <span className='count_total'>  {total} </span>  </Paper>
         </Grid>
         
       </Grid>

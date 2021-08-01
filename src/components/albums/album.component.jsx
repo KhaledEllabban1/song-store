@@ -21,12 +21,13 @@ const Album = ({addAlbum, removeAlbum,checkedArrayOfAlbums, toggleAlbum, selecte
   return (
         <Grid container spacing={7} justifyContent="space-around">
             {
+              selectedAlbums.length ? 
                 selectedAlbums.map((album, index) => {
                   return(
                     <AlbumData key={album.id} album= {album} index = {index} handleChange = {handleChange } />
                   )  
-                })
-            }
+                }) : (<span className='choose'> Choose Singer </span>)
+            } 
         </Grid>
   );
 }

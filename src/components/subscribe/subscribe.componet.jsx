@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
-import { userData } from '../../redux/user/user.action';
+import { userData } from '../../redux/singer/singer.action';
 import SendIcon from '@material-ui/icons/Send';
 
 const useStyles = makeStyles({
@@ -85,6 +85,5 @@ const Subscribe = ({userData}) => {
 const mapDispatchToProps = dispatch => ({
   userData: userCredentials => dispatch(userData(userCredentials))
 });
-
 
 export default connect(null, mapDispatchToProps)(Subscribe);

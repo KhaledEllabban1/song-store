@@ -2,6 +2,7 @@ import SingerActionTypes from './singer.types';
 import data from './data';
 import { add, remove, checkedSinger, toggleFun, selectedAlbum, selectedSongs, addItemWithPrice,count,total } from '../utils';
 
+
 const INITIAL_STATE = {
     data : data,
     selectedSingers : [],
@@ -13,7 +14,8 @@ const INITIAL_STATE = {
     checkedArrayOfSongs : [],
     choosedSongs : [],
     count: 0,
-    total: 0
+    total: 0,
+    userData:null
 }
 
 const singerReducer = (state = INITIAL_STATE, action) => {
@@ -43,6 +45,7 @@ const singerReducer = (state = INITIAL_STATE, action) => {
             return{
                 ...state,
                 checkedArray: toggleFun(state.checkedArray, action.payload),
+                userData: null // to reset when back and edit 
             }
         //                        Album
         case SingerActionTypes.ADD_ALBUM : 
@@ -64,7 +67,8 @@ const singerReducer = (state = INITIAL_STATE, action) => {
         case SingerActionTypes.TOGGLE_ALBUM:
             return{
                 ...state,
-                checkedArrayOfAlbums: toggleFun(state.checkedArrayOfAlbums, action.payload )
+                checkedArrayOfAlbums: toggleFun(state.checkedArrayOfAlbums, action.payload ),
+                userData: null // to reset when back and edit 
             }
         //                        Song
         case SingerActionTypes.ADD_SONG : 
@@ -72,21 +76,26 @@ const singerReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 choosedSongs:addItemWithPrice(state.choosedSongs, action.payload),
                 count:count(addItemWithPrice(state.choosedSongs, action.payload)),
-                total: total(addItemWithPrice(state.choosedSongs, action.payload))
+                total: total(addItemWithPrice(state.choosedSongs, action.payload)),
             }
         case SingerActionTypes.REMOVE_SONG :
             return {
                 ...state,
                 choosedSongs:remove(state.choosedSongs, action.payload),
                 count:count(remove(state.choosedSongs, action.payload)),
-                total: total(remove(state.choosedSongs, action.payload))
-                
+                total: total(remove(state.choosedSongs, action.payload)),
             }
         case SingerActionTypes.TOGGLE_SONG :
             return {
                 ...state,
-                checkedArrayOfSongs: toggleFun(state.checkedArrayOfSongs, action.payload )
+                checkedArrayOfSongs: toggleFun(state.checkedArrayOfSongs, action.payload ),
+                userData: null // to reset when back and edit 
             } 
+        case SingerActionTypes.USER_DATA : 
+            return {
+                ...state,
+                userData : action.payload
+            };
         default:
             return state
     }

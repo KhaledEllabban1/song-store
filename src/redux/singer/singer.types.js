@@ -7,7 +7,8 @@ const SingerActionTypes = {
     TOGGLE_ALBUM : 'TOGGLE_ALBUM',
     ADD_SONG : 'ADD_SONG',
     REMOVE_SONG : 'REMOVE_SONG',
-    TOGGLE_SONG : 'TOGGLE_SONG'
+    TOGGLE_SONG : 'TOGGLE_SONG',
+    USER_DATA : 'USER_DATA'
 };
 
 export default SingerActionTypes;

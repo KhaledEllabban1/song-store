@@ -73,7 +73,7 @@ const Receipt = ({userData, choosedSongs,count, total}) => {
 }
 
 const mapStateToProps = state => ({
-  userData: state.user.userData,
+  userData: state.singer.userData,
   choosedSongs: state.singer.choosedSongs,
   count: state.singer.count,
   total: state.singer.total,

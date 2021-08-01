@@ -44,3 +44,8 @@ export const toggleSong = index => ({
     type:SingerActionTypes.TOGGLE_SONG,
     payload: index
 });
+
+export const userData = user => ({
+    type:SingerActionTypes.USER_DATA,
+    payload: user
+});

@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Checkbox from '@material-ui/core/Checkbox';
 import { connect } from 'react-redux';
-import { userData } from '../../redux/user/user.action';
+import { userData } from '../../redux/singer/singer.action';
 
 const useStyles = makeStyles({
     root: {

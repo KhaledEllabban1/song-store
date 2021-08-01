@@ -15,8 +15,8 @@ const Album = ({addAlbum, removeAlbum,checkedArrayOfAlbums, toggleAlbum, selecte
 
 //   console.log("selectedSingers: ",selectedSingers);
 //   console.log("checkedArrayOfAlbums: ",checkedArrayOfAlbums);
-  console.log("selectedAlbums:", selectedAlbums);
-  console.log("choosedAlbums:", choosedAlbums);
+  // console.log("selectedAlbums:", selectedAlbums);
+  // console.log("choosedAlbums:", choosedAlbums);
   
   return (
         <Grid container spacing={7} justifyContent="space-around">

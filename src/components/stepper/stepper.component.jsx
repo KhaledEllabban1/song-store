@@ -55,12 +55,10 @@ function getStepContent(stepIndex) {
   }
 }
 
-const HorizontalLabelPositionBelowStepper = ({userData, choosedSongs}) => {
+const HorizontalLabelPositionBelowStepper = ({userData}) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
-  console.log(userData)
-  console.log(choosedSongs)
   
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -124,7 +122,6 @@ const HorizontalLabelPositionBelowStepper = ({userData, choosedSongs}) => {
   );
 }
 const mapStateToProps = state => ({
-  userData: state.user.userData,
-  choosedSongs : state.singer.choosedSongs
+  userData: state.singer.userData
 })
 export default connect(mapStateToProps)(HorizontalLabelPositionBelowStepper);
